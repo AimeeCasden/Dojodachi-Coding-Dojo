@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h3{
+            display: inline-block;
+            margin-left: 105px;
+            padding: 15px;
+            
+        }
+        .box{
+            height: 300px;
+           width: 500px;
+           border: 4px solid black;
+           margin-left: 300px;
+        }
+        .box p{
+            text-align: center;    
+
+        }
+        img{
+            width: 50%;
+            margin-left: 25%;    
+        }
+        .buttons{
+            margin-top: 3%;
+            
+            text-align: center;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Feed Pet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    @if(@ViewBag.Happiness < 0 || @ViewBag.Fullness < 0)
+    {
+        <p>Louie got too hungry! Game over!</p>
+        <button><a href="restart">Restart</a></button>
+    }
+    else
+    {
+    @if(@ViewBag.Happiness == 100 && @ViewBag.Fullness==100 && @ViewBag.Energy==100)
+    {
+        <p>You won! Play again!</p>
+        <button><a href="restart">Restart</a></button>
+    }
+    else
+    {
+       <h3>Happiness: @ViewBag.Happiness</h3> 
+       <h3>Fullness: @ViewBag.Fullness</h3>
+       <h3>Energy: @ViewBag.Energy</h3>
+       <h3>Meals: @ViewBag.Meals</h3>
+    }
+    @if(@ViewBag.Happiness == 0 && @ViewBag.Fullness == 0 && @ViewBag.Energy == 0)
+    {
+        <p>Louie Died! YOU MONSTER! </p>
+        <button><a href="restart">Restart</a></button>
+    }
+   
+       <div class = "box">
+           <p>@ViewBag.Message</p>
+           <img src="~/images/dogpic.gif">
+       </div>
+       <div class = "buttons">
+       <button><a href="feed">Feed</a></button>
+       <button><a href="play">Play</a></button>
+       <button><a href="work">Work</a></button>
+       <button><a href="sleep">Sleep</a></button>
+       </div>
+    }
+  
+    
+</body>
+</html>
